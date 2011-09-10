@@ -34,30 +34,15 @@
   <Import Project="$(MSBuildExtensionsPath32)\FSharp\1.0\Microsoft.FSharp.Targets" Condition="!Exists('$(MSBuildBinPath)\Microsoft.Build.Tasks.v4.0.dll')" />
   <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft F#\v4.0\Microsoft.FSharp.Targets" Condition=" Exists('$(MSBuildBinPath)\Microsoft.Build.Tasks.v4.0.dll')" />
   <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="FSharp.Core" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Problem001.fsx" />
     <None Include="Problem002.fsx" />
-    <None Include="Problem031.fsx" />
-    <None Include="Problem039.fsx" />
-    <None Include="Problem051.fsx" />
-    <None Include="Problem054.fsx" />
-    <None Include="Problem060.fsx" />
-    <None Include="Problem061.fsx" />
-    <None Include="Problem062.fsx" />
-    <None Include="Problem063.fsx" />
-    <None Include="Problem065.fsx" />
-    <None Include="Problem066.fsx" />
-    <None Include="Problem070.fsx" />
-    <None Include="Problem074.fsx" />
-    <None Include="Problem075.fsx" />
-    <None Include="Problem076.fsx" />
-    <None Include="Problem077.fsx" />
-    <None Include="Problem078.fsx" />
-    <None Include="Problem081.fsx" />
-    <None Include="Problem087.fsx" />
-    <None Include="Problem089.fsx" />
-    <None Include="Problem092.fsx" />
-    <None Include="Problem111.fsx" />
-    <None Include="Problem112.fsx" />
     <None Include="Problem003.fsx" />
     <None Include="Problem004.fsx" />
     <None Include="Problem005.fsx" />
@@ -66,16 +51,77 @@
     <None Include="Problem008.fsx" />
     <None Include="Problem009.fsx" />
     <None Include="Problem010.fsx" />
-    <None Include="Problem099.fsx" />
     <None Include="Problem011.fsx" />
+    <None Include="Problem012.fsx" />
+    <None Include="Problem013.fsx" />
+    <None Include="Problem014.fsx" />
+    <None Include="Problem015.fsx" />
+    <None Include="Problem016.fsx" />
+    <None Include="Problem017.fsx" />
+    <None Include="Problem018.fsx" />
+    <None Include="Problem019.fsx" />
+    <None Include="Problem020.fsx" />
+    <None Include="Problem021.fsx" />
+    <None Include="Problem022.fsx" />
+    <None Include="Problem023.fsx" />
+    <None Include="Problem024.fsx" />
+    <None Include="Problem025.fsx" />
+    <None Include="Problem026.fsx" />
+    <None Include="Problem027.fsx" />
+    <None Include="Problem028.fsx" />
+    <None Include="Problem029.fsx" />
+    <None Include="Problem030.fsx" />
+    <None Include="Problem031.fsx" />
+    <None Include="Problem032.fsx" />
+    <None Include="Problem033.fsx" />
+    <None Include="Problem034.fsx" />
+    <None Include="Problem035.fsx" />
+    <None Include="Problem036.fsx" />
+    <None Include="Problem037.fsx" />
+    <None Include="Problem038.fsx" />
+    <None Include="Problem039.fsx" />
+    <None Include="Problem040.fsx" />
+    <None Include="Problem041.fsx" />
+    <None Include="Problem042.fsx" />
+    <None Include="Problem043.fsx" />
+    <None Include="Problem044.fsx" />
+    <None Include="Problem045.fsx" />
+    <None Include="Problem046.fsx" />
+    <None Include="Problem047.fsx" />
+    <None Include="Problem048.fsx" />
+    <None Include="Problem049.fsx" />
+    <None Include="Problem050.fsx" />
+    <None Include="Problem051.fsx" />
+    <None Include="Problem052.fsx" />
+    <None Include="Problem053.fsx" />
+    <None Include="Problem054.fsx" />
+    <None Include="Problem055.fsx" />
+    <None Include="Problem056.fsx" />
+    <None Include="Problem057.fsx" />
+    <None Include="Problem058.fsx" />
+    <None Include="Problem062.fsx" />
+    <None Include="Problem063.fsx" />
+    <None Include="Problem066.fsx" />
+    <None Include="Problem067.fsx" />
+    <None Include="Problem069.fsx" />
+    <None Include="Problem070.fsx" />
+    <None Include="Problem072.fsx" />
+    <None Include="Problem073.fsx" />
+    <None Include="Problem074.fsx" />
+    <None Include="Problem076.fsx" />
+    <None Include="Problem077.fsx" />
+    <None Include="Problem078.fsx" />
+    <None Include="Problem081.fsx" />
+    <None Include="Problem085.fsx" />
+    <None Include="Problem087.fsx" />
+    <None Include="Problem089.fsx" />
+    <None Include="Problem092.fsx" />
     <None Include="Problem097.fsx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="mscorlib" />
-    <Reference Include="FSharp.Core" />
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Numerics" />
+    <None Include="Problem099.fsx" />
+    <None Include="Problem112.fsx" />
+    <None Include="Problem145.fsx" />
+    <None Include="Problem205.fsx" />
+    <None Include="Problem206.fsx" />
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
 	     Other similar extension points exist, see Microsoft.Common.targets.
