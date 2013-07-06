@@ -3,6 +3,9 @@
 open System.Collections
 open System.Collections.Generic
 
+let (<&&>) f g x = f x && g x
+let (<||>) f g x = f x || g x
+
 // generate prime numbers up to the specified max
 let genPrimes max =
     // define a cache for holding records of which number is a prime

@@ -38,13 +38,7 @@
   <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft F#\v4.0\Microsoft.FSharp.Targets" Condition="(!Exists('$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets')) And (Exists('$(MSBuildExtensionsPath32)\..\Microsoft F#\v4.0\Microsoft.FSharp.Targets'))" />
   <Import Project="$(MSBuildExtensionsPath32)\FSharp\1.0\Microsoft.FSharp.Targets" Condition="(!Exists('$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets')) And (!Exists('$(MSBuildExtensionsPath32)\..\Microsoft F#\v4.0\Microsoft.FSharp.Targets')) And (Exists('$(MSBuildExtensionsPath32)\FSharp\1.0\Microsoft.FSharp.Targets'))" />
   <ItemGroup>
-    <Reference Include="mscorlib" />
-    <Reference Include="FSharp.Core" />
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Numerics" />
-  </ItemGroup>
-  <ItemGroup>
+    <Compile Include="Common.fs" />
     <None Include="Problem001.fsx" />
     <None Include="Problem002.fsx" />
     <None Include="Problem003.fsx" />
@@ -103,18 +97,24 @@
     <None Include="Problem056.fsx" />
     <None Include="Problem057.fsx" />
     <None Include="Problem058.fsx" />
+    <None Include="Problem059.fsx" />
+    <None Include="Problem060.fsx" />
+    <None Include="Problem060_Sets.fsx" />
     <None Include="Problem062.fsx" />
     <None Include="Problem063.fsx" />
+    <None Include="Problem065.fsx" />
     <None Include="Problem066.fsx" />
     <None Include="Problem067.fsx" />
     <None Include="Problem069.fsx" />
     <None Include="Problem070.fsx" />
+    <None Include="Problem071.fsx" />
     <None Include="Problem072.fsx" />
     <None Include="Problem073.fsx" />
     <None Include="Problem074.fsx" />
     <None Include="Problem076.fsx" />
     <None Include="Problem077.fsx" />
     <None Include="Problem078.fsx" />
+    <None Include="Problem079.fsx" />
     <None Include="Problem081.fsx" />
     <None Include="Problem085.fsx" />
     <None Include="Problem087.fsx" />
@@ -126,6 +126,13 @@
     <None Include="Problem145.fsx" />
     <None Include="Problem205.fsx" />
     <None Include="Problem206.fsx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="FSharp.Core" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
 	     Other similar extension points exist, see Microsoft.Common.targets.
