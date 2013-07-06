@@ -23,9 +23,9 @@ let concatsToPrime' (a, b) =
 let concatsToPrime = memoize concatsToPrime'
 
 // returns the set of primes that concatenates with n to another prime
-let getConcatableSet' n = 
+let getConcatenbleSet' n = 
     primes |> List.filter ((fun n' -> n' > n) <&&> (fun n' -> concatsToPrime(n, n'))) |> Set.ofList
-let getConcatableSet = memoize getConcatableSet'
+let getConcatenbleSet = memoize getConcatenbleSet'
 
 let rec comb n l (s : Set<int>) =
     match n, l with
@@ -34,7 +34,8 @@ let rec comb n l (s : Set<int>) =
     | 1, [x] -> seq { yield [x] }
     | k, x::xs ->
         seq {
-            let s'  = getConcatableSet x |> Set.intersect s
+            // find the set of numbers th
+            let s'  = getConcatenbleSet x |> Set.intersect s
             if not s'.IsEmpty then
                 yield! Seq.map ((@) [x]) (comb (k-1) (s' |> Set.toList) s')
 
