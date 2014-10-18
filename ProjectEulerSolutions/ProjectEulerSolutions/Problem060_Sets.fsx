@@ -34,8 +34,7 @@ let rec comb n l (s : Set<int>) =
     | 1, [x] -> seq { yield [x] }
     | k, x::xs ->
         seq {
-            // find the set of numbers th
-            let s'  = getConcatenbleSet x |> Set.intersect s
+            let s' = getConcatenbleSet x |> Set.intersect s
             if not s'.IsEmpty then
                 yield! Seq.map ((@) [x]) (comb (k-1) (s' |> Set.toList) s')
 
