@@ -26,20 +26,21 @@ let candidates =
 
 let permutations = permute [0..5]
 
-let rec loop pred (ns : int list) (acc : int list) =
-    match ns with
-    | [] when (Seq.head acc) % 100 = (Seq.last acc) / 100
-         -> Some (acc |> List.rev)
-    | [] -> None
-    | n::rest ->
-        candidates.[n] 
-        |> Seq.skipWhile (not << pred)
-        |> Seq.takeWhile pred
-        |> Seq.tryPick (fun x ->
-            let pred y = y / 100 = x % 100 // first 2 digit = last two digit of x
-            loop pred rest (x::acc))
+let processPermutation (indices : int list) =
+    let rec loop pred (acc : int list) = function
+        | [] when (Seq.head acc) % 100 = (Seq.last acc) / 100
+             -> Some (acc |> List.rev)
+        | [] -> None
+        | n::rest ->
+            candidates.[n] 
+            |> Seq.skipWhile (not << pred)
+            |> Seq.takeWhile pred
+            |> Seq.tryPick (fun x ->
+                let pred y = y / 100 = x % 100 // first 2 digit = last two digit of x
+                loop pred (x::acc) rest)
+    loop (fun _ -> true) [] indices
 
 let answer = permutations 
-             |> List.tryPick (fun ns -> loop (fun _ -> true) ns [])
+             |> List.tryPick processPermutation
              |> Option.get
              |> List.sum
