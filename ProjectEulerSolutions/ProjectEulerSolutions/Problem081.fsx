@@ -8,8 +8,7 @@ let matrix = array2D (File.ReadAllLines(@"c:\temp\matrix.txt")
                       |> Array.map (fun l -> l.Split(',') |> Array.map int32))
 
 // init the shortes sum matrix
-let sumMatrix = 
-    Array2D.init dimension dimension (fun i j -> if i = 0 && j = 0 then matrix.[i, j] else 0)
+let sumMatrix = Array2D.init dimension dimension (fun i j -> if i = 0 && j = 0 then matrix.[i, j] else 0)
 
 let fromTop i j = sumMatrix.[i - 1, j] + matrix.[i, j]
 let fromLeft i j = sumMatrix.[i, j - 1] + matrix.[i, j]
