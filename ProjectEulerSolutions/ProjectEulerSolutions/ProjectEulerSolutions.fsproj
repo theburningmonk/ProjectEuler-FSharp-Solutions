@@ -107,6 +107,7 @@
     <None Include="Problem065.fsx" />
     <None Include="Problem066.fsx" />
     <None Include="Problem067.fsx" />
+    <None Include="Problem068.fsx" />
     <None Include="Problem069.fsx" />
     <None Include="Problem070.fsx" />
     <None Include="Problem071.fsx" />

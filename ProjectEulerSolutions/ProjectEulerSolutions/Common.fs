@@ -58,3 +58,22 @@ let rec comb n (l : 'a list) =
             yield! Seq.map ((@) [x]) (comb (k-1) xs)
             yield! comb k xs
         }
+
+/// Groups a sequence into gropus of at most the specified size
+/// Originally from http://fssnip.net/1o
+let inline groupsOfAtMost (size : int) (s : seq<'v>) : seq<'v[]> =
+    seq {
+        let en = s.GetEnumerator ()
+        let more = ref true
+        while !more do
+            let group =
+                [|
+                    let i = ref 0
+                    while !i < size && en.MoveNext () do
+                        yield en.Current
+                        i := !i + 1
+                |]
+            if group.Length = 0
+            then more := false
+            else yield group
+    }
