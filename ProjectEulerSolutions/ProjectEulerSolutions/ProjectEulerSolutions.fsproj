@@ -100,6 +100,7 @@
     <None Include="Problem059.fsx" />
     <None Include="Problem060.fsx" />
     <None Include="Problem060_Sets.fsx" />
+    <None Include="Problem061.fsx" />
     <None Include="Problem062.fsx" />
     <None Include="Problem063.fsx" />
     <None Include="Problem065.fsx" />
@@ -116,12 +117,14 @@
     <None Include="Problem078.fsx" />
     <None Include="Problem079.fsx" />
     <None Include="Problem081.fsx" />
+    <None Include="Problem082-wip.fsx" />
     <None Include="Problem085.fsx" />
     <None Include="Problem087.fsx" />
     <None Include="Problem089.fsx" />
     <None Include="Problem092.fsx" />
     <None Include="Problem097.fsx" />
     <None Include="Problem099.fsx" />
+    <None Include="Problem111-wip.fsx" />
     <None Include="Problem112.fsx" />
     <None Include="Problem145.fsx" />
     <None Include="Problem205.fsx" />
