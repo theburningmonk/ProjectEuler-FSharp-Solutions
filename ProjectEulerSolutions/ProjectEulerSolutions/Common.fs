@@ -6,6 +6,23 @@ open System.Collections.Generic
 let (<&&>) f g x = f x && g x
 let (<||>) f g x = f x || g x
 
+/// Applies memoization to the supplied function f
+let memoize (f : 'a -> 'b) =
+    let cache = new Dictionary<'a, 'b>()
+
+    let memoizedFunc (input : 'a) =
+        // check if there is a cached result for this input
+        match cache.TryGetValue(input) with
+        | true, x   -> x
+        | false, _  ->
+            // evaluate and add result to cache
+            let result = f input
+            cache.Add(input, result)
+            result
+
+    // return the memoized version of f
+    memoizedFunc
+
 // generate prime numbers up to the specified max
 let genPrimes max =
     // define a cache for holding records of which number is a prime
@@ -41,20 +58,3 @@ let rec comb n (l : 'a list) =
             yield! Seq.map ((@) [x]) (comb (k-1) xs)
             yield! comb k xs
         }
-
-/// Applies memoization to the supplied function f
-let memoize (f : 'a -> 'b) =
-    let cache = new Dictionary<'a, 'b>()
-
-    let memoizedFunc (input : 'a) =
-        // check if there is a cached result for this input
-        match cache.TryGetValue(input) with
-        | true, x   -> x
-        | false, _  ->
-            // evaluate and add result to cache
-            let result = f input
-            cache.Add(input, result)
-            result
-
-    // return the memoized version of f
-    memoizedFunc
