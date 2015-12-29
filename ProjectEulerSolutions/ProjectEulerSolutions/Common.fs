@@ -23,10 +23,18 @@ let memoize (f : 'a -> 'b) =
     // return the memoized version of f
     memoizedFunc
 
+// Binary GCD algorithm
+let rec gcd a b = 
+    if b = 0 
+    then abs a 
+    else gcd b (a % b)
+
 // generate prime numbers up to the specified max
 let genPrimes max =
     // define a cache for holding records of which number is a prime
     let cache = new BitArray(max+1, true)
+
+    cache.[1] <- true
  
     // using prime sieve to fill out the cache
     [| 2..max |]
@@ -36,7 +44,7 @@ let genPrimes max =
             |> Array.iter (fun m -> cache.[n * m] <- false))
  
     // build a set of prime numbers using the cache
-    [| 2..max |] 
+    [| 1..max |] 
     |> Array.filter (fun n -> cache.[n])
 
 let rec distribute e = function
