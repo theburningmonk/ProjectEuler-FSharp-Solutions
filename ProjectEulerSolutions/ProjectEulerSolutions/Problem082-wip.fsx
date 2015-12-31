@@ -1,28 +1,54 @@
 ﻿open System
 open System.IO
 
-let dimension = 80
-
 // load the original matrix
-let matrix = array2D (File.ReadAllLines(@"c:\temp\matrix.txt") 
-                      |> Array.map (fun l -> l.Split(',') |> Array.map int32))
+let matrix = 
+    __SOURCE_DIRECTORY__ + "\Problem082_input.txt"
+    |> File.ReadAllLines
+    |> Array.map (fun l -> l.Split ',' |> Array.map int)
+    |> array2D
+
+let dim = Array2D.length1 matrix
 
 // init the shortes sum matrix
-let sumMatrix = Array2D.init dimension dimension (fun i j -> if j = 0 then matrix.[i, j] else 0)
+let sumMatrix = 
+    (fun row col -> 
+        if col = 0 then matrix.[row, col] else 0)
+    |> Array2D.init dim dim 
 
-let fromTop i j    = sumMatrix.[i - 1, j] + matrix.[i, j]
-let fromBelow i j  = sumMatrix.[i + 1, j] + matrix.[i, j]
-let fromLeft i j   = sumMatrix.[i, j - 1] + matrix.[i, j]
+let fromTopDown row col = 
+    sumMatrix.[row-1, col-1] + 
+    matrix.[row-1, col] + 
+    matrix.[row, col]
+let fromBottomUp row col = 
+    sumMatrix.[row+1, col-1] + 
+    matrix.[row+1, col] +
+    matrix.[row, col]
+let fromLeft row col = 
+    sumMatrix.[row, col-1] + 
+    matrix.[row, col]
 
-// for each position (i, j) find the shortest sum leading to this point by moving down or
-// right from the previous point in the path
-for i = 0 to dimension - 1 do
-    for j = 0 to dimension - 1 do
-        match (i, j) with
-        | (_, 0) -> ()
-        | (0, _) -> sumMatrix.[i, j] <- min (fromLeft i j) (fromBelow i j)
-        | (_, _) when i < (dimension - 1)
-                 -> sumMatrix.[i, j] <- min (fromLeft i j) (min (fromTop i j) (fromBelow i j))
-        | (_, _) -> sumMatrix.[i, j] <- min (fromLeft i j) (fromTop i j)
+// for each position (row, col) find the shortest sum leading to 
+// this point by moving down, up or right from the previous 
+// point in the path
+for col = 1 to dim-1 do
+    for row = 0 to dim-1 do
+        let left = fromLeft row col
+
+        match (row, col) with
+        | (0, _) -> 
+            let bottomUp = fromBottomUp row col
+            sumMatrix.[row, col] <- min left bottomUp
+        | (_, _) when row = dim-1 -> 
+            let topDown = fromTopDown row col
+            sumMatrix.[row, col] <- min left topDown
+        | (_, _) -> 
+            let topDown  = fromTopDown row col
+            let bottomUp = fromBottomUp row col
+            let minSum   = min left <| min topDown bottomUp
+            sumMatrix.[row, col] <- minSum
         
-let answer = [| 0..dimension-1 |] |> Array.map (fun i -> sumMatrix.[i, dimension-1]) |> Array.min
+let answer = 
+    [| 0..dim-1 |] 
+    |> Array.map (fun row -> sumMatrix.[row, dim-1]) 
+    |> Array.min

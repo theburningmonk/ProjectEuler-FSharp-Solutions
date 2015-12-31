@@ -23,7 +23,6 @@ let memoize (f : 'a -> 'b) =
     // return the memoized version of f
     memoizedFunc
 
-// Binary GCD algorithm
 let rec gcd a b = 
     if b = 0 
     then abs a 
