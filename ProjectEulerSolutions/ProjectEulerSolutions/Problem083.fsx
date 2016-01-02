@@ -15,8 +15,7 @@ let dim = Array2D.length1 matrix
 let sumMatrix = 
     (fun row col -> 
         match row, col with
-        | 0, 0 -> matrix.[row, col] 
-        | 0, _ -> matrix.[row, 0..col] |> Array.sum
+        | 0, 0 -> matrix.[row, col]
         | _, _ -> 
             let hSum = matrix.[0, 0..col] |> Array.sum
             let vSum = matrix.[1..row, col] |> Array.sum
