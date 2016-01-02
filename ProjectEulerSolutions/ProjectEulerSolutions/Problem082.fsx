@@ -1,6 +1,8 @@
 ﻿open System
 open System.IO
 
+#time
+
 // load the original matrix
 let matrix = 
     __SOURCE_DIRECTORY__ + "\Problem082_input.txt"
