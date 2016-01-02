@@ -134,6 +134,8 @@
     <None Include="Problem081.fsx" />
     <Content Include="Problem082_input.txt" />
     <None Include="Problem082.fsx" />
+    <Content Include="Problem083_input.txt" />
+    <None Include="Problem083.fsx" />
     <None Include="Problem085.fsx" />
     <None Include="Problem087.fsx" />
     <None Include="Problem089.fsx" />
