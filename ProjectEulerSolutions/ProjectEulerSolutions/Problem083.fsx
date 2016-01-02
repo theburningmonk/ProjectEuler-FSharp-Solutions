@@ -31,24 +31,24 @@ let fromLeft row col =
 let fromRight row col =
     sumMatrix.[row, col+1] + matrix.[row, col]
 
-let rec optimize () =
-    let calNewMin row col =
-        seq {
-            if row > 0 then yield fromTop row col
-            if row < dim-1 then yield fromBelow row col
-            if col > 0 then yield fromLeft row col
-            if col < dim-1 then yield fromRight row col
-        }
-        |> Seq.min
+let calNewMin row col =
+    seq {
+        if row > 0 then yield fromTop row col
+        if row < dim-1 then yield fromBelow row col
+        if col > 0 then yield fromLeft row col
+        if col < dim-1 then yield fromRight row col
+    }
+    |> Seq.min
 
-    let cells =
-        seq {
-            for row = 0 to dim-1 do
-                for col = 0 to dim-1 do
-                    yield row, col
-        }
-        |> Seq.skip 1 // skip (0, 0)
-    
+let cells =
+    seq {
+        for row = 0 to dim-1 do
+            for col = 0 to dim-1 do
+                yield row, col
+    }
+    |> Seq.skip 1 // skip (0, 0)
+
+let rec optimize () =
     let changes =
         cells
         |> Seq.sumBy (fun (row, col) ->
